@@ -1,4 +1,4 @@
-package club.shengcong.springbootbase.util;
+package club.shengcong.sendemail.util;
 
 
 import cn.hutool.core.lang.Console;

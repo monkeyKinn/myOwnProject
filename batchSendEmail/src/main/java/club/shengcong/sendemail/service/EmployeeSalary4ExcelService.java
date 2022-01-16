@@ -1,6 +1,6 @@
-package club.shengcong.springbootbase.service;
+package club.shengcong.sendemail.service;
 
-import club.shengcong.springbootbase.entity.EmployeeSalary4Excel;
+import club.shengcong.sendemail.entity.EmployeeSalary4Excel;
 
 import java.util.List;
 

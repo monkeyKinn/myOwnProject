@@ -1,9 +1,9 @@
-package club.shengcong.springbootbase.service.impl;
+package club.shengcong.sendemail.service.impl;
 
-import club.shengcong.springbootbase.entity.EmployeeSalary4Excel;
-import club.shengcong.springbootbase.service.EmployeeSalary4ExcelService;
-import club.shengcong.springbootbase.util.Email;
-import club.shengcong.springbootbase.vo.EmployeeSalary4ExcelVO;
+import club.shengcong.sendemail.entity.EmployeeSalary4Excel;
+import club.shengcong.sendemail.service.EmployeeSalary4ExcelService;
+import club.shengcong.sendemail.util.Email;
+import club.shengcong.sendemail.vo.EmployeeSalary4ExcelVO;
 import com.alibaba.fastjson.JSON;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;

@@ -9,10 +9,10 @@
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
   <groupId>club.shengcong</groupId>
-  <artifactId>springBootBase</artifactId>
+  <artifactId>sendemail</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>springBootBase</name>
-  <description>springBootBase</description>
+  <name>batchSendEmail</name>
+  <description>批量发送email</description>
   <properties>
     <java.version>1.8</java.version>
   </properties>

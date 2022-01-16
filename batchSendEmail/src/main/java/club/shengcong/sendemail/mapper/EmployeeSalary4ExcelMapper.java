@@ -1,4 +1,4 @@
-package club.shengcong.springbootbase.mapper;
+package club.shengcong.sendemail.mapper;
 
 /**
  * 员工工资条Excel的映射器
