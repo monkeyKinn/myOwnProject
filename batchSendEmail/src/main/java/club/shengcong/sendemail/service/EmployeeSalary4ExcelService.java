@@ -14,5 +14,16 @@ import java.util.List;
  */
 public interface EmployeeSalary4ExcelService {
 
+    /**
+     * 发送数据
+     * @param employeeSalary4Excels  员工工资Excel实体 的 列表
+     * @author 金聖聰
+     * @email jinshengcong@163.com
+     * Modification History:
+     * Date         Author        Description        version
+     *--------------------------------------------------------*
+     * 2022/1/21 0:43    金聖聰     修改原因            1.0
+     */
     void sendData(List<EmployeeSalary4Excel> employeeSalary4Excels);
+
 }

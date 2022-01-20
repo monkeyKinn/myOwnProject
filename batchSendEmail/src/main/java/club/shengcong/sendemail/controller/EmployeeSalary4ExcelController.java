@@ -45,12 +45,12 @@ public class EmployeeSalary4ExcelController {
             return "哇偶宝贝,聪聪为您批量下发工资条成功,快去倒杯咖啡,然后康康收件箱叭~";
         } catch (IOException e) {
             e.printStackTrace();
+            return "啊呀巴比Q了,下发失败,快去找聪聪~";
         }finally {
             if (excelReader != null) {
                 // 这里千万别忘记关闭，读的时候会创建临时文件，到时磁盘会崩的
                 excelReader.finish();
             }
         }
-        return "啊呀巴比Q了,下发失败,快去找聪聪~";
     }
 }
