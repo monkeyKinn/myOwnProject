@@ -9,7 +9,7 @@
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
   <groupId>club.shengcong</groupId>
-  <artifactId>sendemail</artifactId>
+  <artifactId>batchSendEmail</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>batchSendEmail</name>
   <description>批量发送email</description>
