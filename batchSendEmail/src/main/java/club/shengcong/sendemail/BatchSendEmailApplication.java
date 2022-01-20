@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringBootBaseApplication {
+public class BatchSendEmailApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringBootBaseApplication.class, args);
+        SpringApplication.run(BatchSendEmailApplication.class, args);
     }
 
 }
