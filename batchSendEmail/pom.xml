@@ -9,12 +9,13 @@
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
   <groupId>club.shengcong</groupId>
-  <artifactId>batchSendEmail</artifactId>
+  <artifactId>batchsendemail</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>batchSendEmail</name>
   <description>批量发送email</description>
   <properties>
     <java.version>1.8</java.version>
+    <docker.image.prefix>jinsc</docker.image.prefix>
   </properties>
 
 
@@ -93,6 +94,36 @@
               <artifactId>lombok</artifactId>
             </exclude>
           </excludes>
+        </configuration>
+      </plugin>
+      <!-- Step.2     添加插件-->
+      <plugin>
+        <groupId>com.spotify</groupId>
+        <artifactId>docker-maven-plugin</artifactId>
+        <version>1.0.0</version>
+
+        <configuration>
+          <!--远程docker地址-->
+          <dockerHost>https://101.35.92.243:2376</dockerHost>
+          <!--镜像名称,前缀/项目名-->
+          <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
+          <!-- 指定标签 -->
+          <imageTags>
+            <imageTag>latest</imageTag>
+          </imageTags>
+          <!--dockerFile的位置-->
+          <dockerDirectory>src/main/docker</dockerDirectory>
+          <!-- 指定tls证书的目录 -->
+          <dockerCertPath>E:\shengcongDockerPass</dockerCertPath>
+          <resources>
+            <resource>
+              <targetPath>/</targetPath>
+              <!--默认的target文件夹位置-->
+              <directory>${project.build.directory}</directory>
+              <!--最终名称.jar-->
+              <include>${project.build.finalName}.jar</include>
+            </resource>
+          </resources>
         </configuration>
       </plugin>
     </plugins>
