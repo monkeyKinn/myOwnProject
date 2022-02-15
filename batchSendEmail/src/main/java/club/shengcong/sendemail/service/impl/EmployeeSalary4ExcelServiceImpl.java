@@ -4,9 +4,11 @@ import club.shengcong.sendemail.entity.EmployeeSalary4Excel;
 import club.shengcong.sendemail.service.EmployeeSalary4ExcelService;
 import club.shengcong.sendemail.util.EmailUtils;
 import club.shengcong.sendemail.vo.EmployeeSalary4ExcelVO;
+import cn.hutool.core.lang.Console;
 import com.alibaba.fastjson.JSON;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.MailSendException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
@@ -96,7 +98,8 @@ public class EmployeeSalary4ExcelServiceImpl implements EmployeeSalary4ExcelServ
             mimeMessageHelper.setCc(this.cc);
             mimeMessageHelper.setText(body, true);
             javaMailSender.send(mimeMessage);
-        } catch (MessagingException | IOException e) {
+        } catch (MessagingException | IOException  | MailSendException e) {
+            Console.log("异常email: ",this.to);
             e.printStackTrace();
         }
     }
