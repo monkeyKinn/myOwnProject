@@ -8,15 +8,12 @@ import cn.hutool.core.lang.Console;
 import com.alibaba.fastjson.JSON;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.mail.MailSendException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -98,7 +95,7 @@ public class EmployeeSalary4ExcelServiceImpl implements EmployeeSalary4ExcelServ
             mimeMessageHelper.setCc(this.cc);
             mimeMessageHelper.setText(body, true);
             javaMailSender.send(mimeMessage);
-        } catch (MessagingException | IOException  | MailSendException e) {
+        } catch (Exception e) {
             Console.log("异常email: ",this.to);
             e.printStackTrace();
         }
