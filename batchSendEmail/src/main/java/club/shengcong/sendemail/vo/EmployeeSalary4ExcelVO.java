@@ -31,6 +31,12 @@ public class EmployeeSalary4ExcelVO implements Serializable {
     private String wageJobs;
     /** 技能工资 */
     private String skillSalary;
+    /** 通讯补贴 */
+    private String communicationAllowance;
+    /** 岗位津贴 */
+    private String postAllowance;
+    /** 工龄工资 */
+    private String senioritySalary;
     /** 餐费补贴 */
     private String mealAllowance;
     /** 社保基数 */

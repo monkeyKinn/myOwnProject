@@ -69,9 +69,12 @@ public class EmailUtils {
                         "<td>部门</td>" +
                         "<td>岗位工资</td>" +
                         "<td>技能工资</td>" +
+                        "<td>通讯补贴</td>" +
+                        "<td>岗位津贴</td>" +
+                        "<td>工龄工资</td>" +
                         "<td>餐费补贴</td>" +
                         "<td>社保基数</td>" +
-                        "<td>个人养老&emsp;个人失业&emsp;个人医疗" +
+                        "<td>个人养老&个人失业&个人医疗" +
                         "<td>个人公积金</td>" +
                         "<td>个人小计</td>" +
                         "<td>病假天数</td>" +
@@ -95,6 +98,9 @@ public class EmailUtils {
                                 "</td><td>" + map.getOrDefault("department", "无") +
                                 "</td><td>" + map.getOrDefault("wageJobs", "无") +
                                 "</td><td>" + map.getOrDefault("skillSalary", "无") +
+                                "</td><td>" + map.getOrDefault("communicationAllowance", "无") +
+                                "</td><td>" + map.getOrDefault("postAllowance", "无") +
+                                "</td><td>" + map.getOrDefault("senioritySalary", "无") +
                                 "</td><td>" + map.getOrDefault("mealAllowance", "无") +
                                 "</td><td>" + map.getOrDefault("socialSecurityBase", "无") +
                                 "</td><td>" + map.getOrDefault("personal", "无") +
