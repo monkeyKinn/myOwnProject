@@ -137,11 +137,9 @@ public class EmailUtils {
 
 
     public static void main(String[] args) {
-        List<String> list;
-        List<Player> playerList;
-        list = new ArrayList<>();
         // 原始的
-        playerList = getPlayers(list);
+        List<Player> playerList = getPlayers();
+
         System.out.println("原来的");
         new ArrayList<>(playerList).forEach(System.out::println);
         System.out.println("----------------");
@@ -199,7 +197,7 @@ public class EmailUtils {
         Map<String,Player> map =new HashMap<>();
         for (String o : set1) {
             List<Player> players2 = collect1.get(o);
-            Player player = players2.stream().min(Comparator.comparing(Player::getAge)).get();
+            Player player = players2.stream().max(Comparator.comparing(Player::getAge)).get();
             map.put(o,player);
         }
         Set<String> set2 = map.keySet();
@@ -243,13 +241,8 @@ public class EmailUtils {
         return resList;
     }
 
-    private static List<Player> getPlayers(List<String> list) {
+    private static List<Player> getPlayers() {
         List<Player> playerList;
-        list.add("kobe");
-        list.add("james");
-        list.add("curry");
-        list.add("zimug");
-        list.add("zimug");
 
         playerList = new ArrayList<>();
         playerList.add(new Player("kobe", "男", 10000));
@@ -259,7 +252,7 @@ public class EmailUtils {
         playerList.add(new Player("zimug", "女", 18));
         playerList.add(new Player("zimug", "女", 16));
         playerList.add(new Player("zimug", "男", 18));
-        playerList.add(new Player("zimug", "男", 18));
+        playerList.add(new Player("zimug", "男", 28));
         return playerList;
     }
 
