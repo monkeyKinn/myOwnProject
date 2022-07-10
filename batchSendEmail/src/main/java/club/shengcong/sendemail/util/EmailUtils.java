@@ -12,8 +12,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.text.MessageFormat;
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 邮件工具类
@@ -28,14 +29,13 @@ public class EmailUtils {
 
     /**
      * 把传过来的list数据拼接
-     *
      * @param list 传过来的map数据
      * @return java.lang.String
      * @author 金聖聰
      * @email jinshengcong@163.com
      * Modification History:
      * Date         Author        Description        version
-     * --------------------------------------------------------*
+     *--------------------------------------------------------*
      * 2022/1/21 0:53    金聖聰     修改原因            1.0
      */
     public static String buildContent(List<Map<String, Object>> list) throws IOException {
@@ -61,8 +61,7 @@ public class EmailUtils {
 
         String contentText = "以下是您的本月工资明细, 敬请查看! 如有任何问题请咨询物源行政部，如核对无误请回复此邮件,谢谢！" +
                 "<br>Below is your monthly salary details, please check. If you have any questions, " +
-                "please consult the Administration Department of WuYuan. If you check it correctly, please reply to " +
-                "this " +
+                "please consult the Administration Department of WuYuan. If you check it correctly, please reply to this " +
                 "email. Thank you！";
         //邮件表格header
         String header =
@@ -127,185 +126,10 @@ public class EmailUtils {
         String emailHeadColor = "#fa5834";
         String date = DateFormatUtils.format(new Date(), "yyyy/MM/dd HH:mm:ss");
         //填充html模板中的五个参数
-        String htmlText = MessageFormat.format(buffer.toString(), emailHeadColor, contentText, date, header,
-                linesBuffer.toString());
+        String htmlText = MessageFormat.format(buffer.toString(), emailHeadColor, contentText, date, header, linesBuffer.toString());
         //改变表格样式
         htmlText = htmlText.replaceAll("<td>", "<td  style=\"padding:6px 6px; line-height: 150%;border: 1px solid " +
                 "#eee; width: 100%; word-wrap: break-word;\">");
         return htmlText;
-    }
-
-
-    public static void main(String[] args) {
-        // 原始的
-        List<Player> playerList = getPlayers();
-
-        System.out.println("原来的");
-        new ArrayList<>(playerList).forEach(System.out::println);
-        System.out.println("----------------");
-        // 去重后的set形式
-        Set<Player> playerSetDiff = new TreeSet<>(Comparator.comparing(o -> (o.getName() + o.getSex())));
-        playerSetDiff.addAll(playerList);
-        // 去重后的list形式
-        List<Player> playerListDiff = new ArrayList(playerSetDiff);
-        // 原始的和去重后的差集
-        List<Player> players = subList1(playerList, playerListDiff);
-        System.out.println("去重后的");
-        new ArrayList<>(playerListDiff).forEach(System.out::println);
-        System.out.println("----------------");
-        System.out.println("去重后的与原始的差集");
-        new ArrayList<>(players).forEach(System.out::println);
-        System.out.println("----------------");
-        // 根据name和sex 分组
-        System.out.println("去重后的与原始的差集 根据name和sex 分组");
-        Map<String, List<Player>> collect = players.stream().collect(
-                Collectors.groupingBy(a -> format("{0}#{1}", a.getName(), a.getSex())));
-        Set<String> set = collect.keySet();
-        for (String o : set) {
-            System.out.println(o + "_" + collect.get(o));
-        }
-        System.out.println("----------------");
-        // 去重后的去掉分组的key的元素
-        System.out.println("去重后的去掉分组的key的元素");
-        for (int i = playerListDiff.size() - 1; i >= 0; i--) {
-            Player player = playerListDiff.get(i);
-            for (String s : set) {
-                if ((player.getName() + "#" + player.getSex()).equals(s)) {
-                    playerListDiff.remove(player);
-                }
-            }
-        }
-        new ArrayList<>(playerListDiff).forEach(System.out::println);
-        System.out.println("----------------");
-        // playerListDiff把这个作为最终的初始的状态
-        // 这个最终的和原来的差集
-        System.out.println("这个最终的和原来的差集");
-        List<Player> players1 = subList1(playerList, playerListDiff);
-        new ArrayList<>(players1).forEach(System.out::println);
-        System.out.println("----------------");
-        //分组
-        System.out.println("这个最终的和原来的差集 根据name和sex 分组");
-        Map<String, List<Player>> collect1 = players1.stream().collect(
-                Collectors.groupingBy(a -> format("{0}#{1}", a.getName(), a.getSex())));
-        Set<String> set1 = collect1.keySet();
-        for (String o : set1) {
-            System.out.println(o + "_" + collect1.get(o));
-        }
-        System.out.println("----------------");
-        // 每组中取出年龄最小的
-        System.out.println("每组中取出年龄最小的");
-        Map<String,Player> map =new HashMap<>();
-        for (String o : set1) {
-            List<Player> players2 = collect1.get(o);
-            Player player = players2.stream().max(Comparator.comparing(Player::getAge)).get();
-            map.put(o,player);
-        }
-        Set<String> set2 = map.keySet();
-        for (String o : set2) {
-            System.out.println(o + "_" + map.get(o));
-        }
-        System.out.println("----------------");
-        // 最终插入到playerListDiff
-        System.out.println("最终的结果:找到了原始的中,相同名字相同性别的,并年龄最小的list");
-        for (String o : set2) {
-            playerListDiff.add(map.get(o));
-        }
-        new ArrayList<>(playerListDiff).forEach(System.out::println);
-        System.out.println("----------------");
-
-    }
-
-    public static String format(String value, Object... paras) {
-        return MessageFormat.format(value, paras);
-    }
-
-    /**
-     * 差集(基于常规解法）优化解法1 适用于中等数据量
-     * 求List1中有的但是List2中没有的元素
-     * 空间换时间降低时间复杂度
-     * 时间复杂度O(Max(list1.size(),list2.size()))
-     */
-    public static List<Player> subList1(List<Player> list1, List<Player> list2) {
-        //空间换时间 降低时间复杂度
-        Map<Player, Player> tempMap = new HashMap<>();
-        for (Player item : list2) {
-            tempMap.put(item, item);
-        }
-        //LinkedList 频繁添加删除 也可以ArrayList容量初始化为List1.size(),防止数据量过大时频繁扩容以及数组复制
-        List<Player> resList = new LinkedList<>();
-        for (Player item : list1) {
-            if (!tempMap.containsKey(item)) {
-                resList.add(item);
-            }
-        }
-        return resList;
-    }
-
-    private static List<Player> getPlayers() {
-        List<Player> playerList;
-
-        playerList = new ArrayList<>();
-        playerList.add(new Player("kobe", "男", 10000));
-        playerList.add(new Player("james", "男", 32));
-        playerList.add(new Player("curry", "男", 30));
-        playerList.add(new Player("zimug", "男", 1));
-        playerList.add(new Player("zimug", "女", 18));
-        playerList.add(new Player("zimug", "女", 16));
-        playerList.add(new Player("zimug", "男", 18));
-        playerList.add(new Player("zimug", "男", 28));
-        return playerList;
-    }
-
-    private static class Player {
-        private String name;
-        private String sex;
-        private Integer age;
-
-        public Player() {
-        }
-
-        public Player(String name, Integer age) {
-            this.name = name;
-            this.age = age;
-        }
-
-        public Player(String name, String sex, Integer age) {
-            this.name = name;
-            this.sex = sex;
-            this.age = age;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public Integer getAge() {
-            return age;
-        }
-
-        public void setAge(Integer age) {
-            this.age = age;
-        }
-
-        @Override
-        public String toString() {
-            return "Player{" +
-                    "name='" + name + '\'' +
-                    ", sex='" + sex + '\'' +
-                    ", age=" + age +
-                    '}';
-        }
-
-        public String getSex() {
-            return sex;
-        }
-
-        public void setSex(String sex) {
-            this.sex = sex;
-        }
     }
 }
