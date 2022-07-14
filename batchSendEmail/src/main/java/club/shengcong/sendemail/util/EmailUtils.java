@@ -74,6 +74,7 @@ public class EmailUtils {
                         "<td>通讯补贴</td>" +
                         "<td>岗位津贴</td>" +
                         "<td>工龄工资</td>" +
+                        "<td>高温费</td>" +
                         "<td>餐费补贴</td>" +
                         "<td>社保基数</td>" +
                         "<td>个人养老&个人失业&个人医疗" +
@@ -103,6 +104,7 @@ public class EmailUtils {
                                 "</td><td>" + map.getOrDefault("communicationAllowance", "无") +
                                 "</td><td>" + map.getOrDefault("postAllowance", "无") +
                                 "</td><td>" + map.getOrDefault("senioritySalary", "无") +
+                                "</td><td>" + map.getOrDefault("highTemperatureFee", "无") +
                                 "</td><td>" + map.getOrDefault("mealAllowance", "无") +
                                 "</td><td>" + map.getOrDefault("socialSecurityBase", "无") +
                                 "</td><td>" + map.getOrDefault("personal", "无") +

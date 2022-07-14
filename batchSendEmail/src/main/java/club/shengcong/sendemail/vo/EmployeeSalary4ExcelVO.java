@@ -37,6 +37,8 @@ public class EmployeeSalary4ExcelVO implements Serializable {
     private String postAllowance;
     /** 工龄工资 */
     private String senioritySalary;
+    /** 高温费 */
+    private String highTemperatureFee;
     /** 餐费补贴 */
     private String mealAllowance;
     /** 社保基数 */

@@ -51,11 +51,15 @@ public class EmployeeSalary4Excel implements Serializable {
     @ExcelProperty(index = 8)
     private String senioritySalary;
 
-    /** 餐费补贴 */
+    /** 高温费 */
     @ExcelProperty(index = 9)
+    private String highTemperatureFee;
+
+    /** 餐费补贴 */
+    @ExcelProperty(index = 10)
     private String mealAllowance;
     /** 社保基数 */
-    @ExcelProperty(index = 10)
+    @ExcelProperty(index = 11)
     private String socialSecurityBase;
     // /** 个人养老 */
     // @ExcelProperty(index = 8)
@@ -66,49 +70,49 @@ public class EmployeeSalary4Excel implements Serializable {
     // /** 个人医疗 */
     // @ExcelProperty(index = 10)
     // private String personalMedical;
-    @ExcelProperty(index = 11)
+    @ExcelProperty(index = 12)
     private String personal;
     /** 个人公积金 */
-    @ExcelProperty(index = 12)
+    @ExcelProperty(index = 13)
     private String personalProvidentFund;
     /** 个人小计 */
-    @ExcelProperty(index = 13)
+    @ExcelProperty(index = 14)
     private String personalSubtotal;
     /** 病假天数 */
-    @ExcelProperty(index = 14)
+    @ExcelProperty(index = 15)
     private String sickDays;
     /** 病假扣款 */
-    @ExcelProperty(index = 15)
+    @ExcelProperty(index = 16)
     private String sickLeaveDeduction;
     /** 事假天数 */
-    @ExcelProperty(index = 16)
+    @ExcelProperty(index = 17)
     private String personalLeaveDays;
     /** 事假扣款 */
-    @ExcelProperty(index = 17)
+    @ExcelProperty(index = 18)
     private String personalLeaveDeduction;
     /** 迟到扣款 */
-    @ExcelProperty(index = 18)
+    @ExcelProperty(index = 19)
     private String lateCharge;
     /** 小计 */
-    @ExcelProperty(index = 19)
+    @ExcelProperty(index = 20)
     private String subtotal;
     /** 应税工资 */
-    @ExcelProperty(index = 20)
+    @ExcelProperty(index = 21)
     private String taxableSalary;
     /** 代扣个人所得税 */
-    @ExcelProperty(index = 21)
+    @ExcelProperty(index = 22)
     private String withholdingPersonalIncomeTax;
     /** 岗位实发工资 */
-    @ExcelProperty(index = 22)
+    @ExcelProperty(index = 23)
     private String postActualSalary;
     /** 技能绩效实发工资 */
-    @ExcelProperty(index = 23)
+    @ExcelProperty(index = 24)
     private String skillPerformancePayroll;
     /** 合计 */
-    @ExcelProperty(index = 24)
+    @ExcelProperty(index = 25)
     private String total;
     /** 邮箱地址 */
-    @ExcelProperty(index = 25)
+    @ExcelProperty(index = 26)
     private String emailAddress;
 
 }
