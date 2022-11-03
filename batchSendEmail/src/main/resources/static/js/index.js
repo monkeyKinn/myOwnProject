@@ -8,7 +8,7 @@ $('#sendButton4EmpSal').on('click', function () {
     alert("请选择需要上传的表单")
   } else {
     $.ajax({
-      url: "https://localhost:443" + projectName + "/excel/readAndSendEmpSalExcelData",
+      url: projectName + "/excel/readAndSendEmpSalExcelData",
       type: 'POST',
       async: false,
       data: formData,
