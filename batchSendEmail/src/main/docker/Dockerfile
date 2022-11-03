@@ -1,4 +1,4 @@
-FROM java:8
+FROM openjdk:8
 VOLUME /tmp
 ENV LANG C.UTF-8
 ENV LANGUAGE zh_CN.UTF-8
