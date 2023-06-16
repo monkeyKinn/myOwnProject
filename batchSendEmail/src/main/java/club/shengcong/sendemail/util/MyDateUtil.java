@@ -20,8 +20,9 @@ import static java.time.temporal.TemporalAdjusters.firstInMonth;
  * @copyright 金聖聰©
  * @since Created in 2023/1/11 16:42
  */
-public class DateUtil
+public class MyDateUtil
 {
+    private MyDateUtil(){}
 
     /**
      * 获取某一年的第一天
