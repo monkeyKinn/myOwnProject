@@ -10,7 +10,7 @@ $('#sendButton4EmpSal').on('click', function () {
     $.ajax({
       url: projectName + "excel/readAndSendEmpSalExcelData",
       type: 'POST',
-      async: false,
+      async: true,
       data: formData,
       // 告诉jQuery不要去处理发送的数据
       processData: false,
